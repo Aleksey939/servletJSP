@@ -22,5 +22,6 @@
     <input type='submit'/>
 </form>
 <a href="all_products">Все продукты </a>
+
 </body>
 </html>

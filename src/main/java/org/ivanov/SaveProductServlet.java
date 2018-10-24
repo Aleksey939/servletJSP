@@ -15,7 +15,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-@WebServlet("/index")
+@WebServlet("/")
 public class SaveProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,7 +42,7 @@ public class SaveProductServlet extends HttpServlet {
             connection = DriverManager.getConnection(connectionString,"root","");
             statement = (Statement) connection.createStatement();
             statement.execute("use Products");
-            statement.execute("INSERT INTO products (Name, Description,Price ) VALUES ('name','desc',10)");
+            statement.execute("INSERT INTO products (Name, Description,Price ) VALUES ('"+name+"','desc',10)");
 
             req.getRequestDispatcher("/WEB-INF/index.jsp").forward(req,resp);
            // resp.sendRedirect("/WEB-INF/index.jsp");

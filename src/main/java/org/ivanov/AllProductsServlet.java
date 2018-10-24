@@ -34,21 +34,24 @@ public class AllProductsServlet extends HttpServlet {
         Connection connection = null;
         Statement statement = null;
         try {
-            connection = DriverManager.getConnection(connectionString,"root","");
+            connection = DriverManager.getConnection(connectionString, "root", "");
             statement = (Statement) connection.createStatement();
             statement.executeQuery("USE Products");
             ResultSet resultSet = statement.executeQuery("SELECT * from products");
-            while (resultSet.next()) {
-                System.out.println(resultSet.getInt(1));
-                System.out.println(resultSet.getString("Name"));
-                System.out.println(resultSet.getString("Description"));
-                System.out.println(resultSet.getInt("Price"));
-            }
+            req.setAttribute("resultSet", resultSet);
+
+//            while (resultSet.next()) {
+//                System.out.println(resultSet.getInt(1));
+//                System.out.println(resultSet.getString("Name"));
+//                System.out.println(resultSet.getString("Description"));
+//                System.out.println(resultSet.getInt("Price"));
+//            }
+
 
         } catch (SQLException e) {
-            e.printStackTrace();
-        }
 
-        req.getRequestDispatcher("/WEB-INF/all_products.jsp").forward(req,resp);
+
+        }
+        req.getRequestDispatcher("/WEB-INF/all_products.jsp").forward(req, resp);
     }
 }

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.sql.ResultSet" %><%--
   Created by IntelliJ IDEA.
   User: Алексей
   Date: 22.10.2018
@@ -13,9 +13,14 @@
 </head>
 <body>
 <ul>
-
-
-    <li>1</li><li>2</li>
+<%
+    ResultSet resultSet= (ResultSet) request.getAttribute("resultSet");
+    while (resultSet.next()) {%>
+       <li>
+           <% resultSet.getString("Name");
+            resultSet.getString("Description");
+            resultSet.getInt("Price");} %>
+           </li>
 </ul>
 </body>
 </html>
