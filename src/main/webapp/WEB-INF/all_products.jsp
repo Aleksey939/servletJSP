@@ -13,13 +13,12 @@
 </head>
 <body>
 <ul>
-<%
-    ResultSet resultSet= (ResultSet) request.getAttribute("resultSet");
+<% ResultSet resultSet= (ResultSet) request.getAttribute("resultSet");
     while (resultSet.next()) {%>
        <li>
            <% resultSet.getString("Name");
             resultSet.getString("Description");
-            resultSet.getInt("Price");} %>
+            resultSet.getInt("Price");}%>
            </li>
 </ul>
 </body>
